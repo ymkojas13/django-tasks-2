@@ -1,55 +1,47 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 {% load static %}
-
 {% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Event Registration form</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<style>
+		body,
+		html {
+			margin: -1;
+			padding: -1;
+			height: 99%;
+			background: #6abecc !important;
+		}
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+	</style>
 </head>
 <body>
-<br><br><br>
-
-
+<script src="{% static 'js/jjquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
 <div class="container">
   <div class="row ">
     <div class="col-sm-8 align="center">
 
-        <h4 class="text-center alert alert-info"> Add online course registration </h4>
+ <h1 class="text-center alert alert-info"> <font color="blue">Admin Profile Page </font></h1>
+<h3> welcome {{name}}</h3>
+<a href="{% url 'logout' %}"><input type="submit" class="btn btn-success" value="Log out"></a>
 
-             <form action="" method="POST">
-                 {% csrf_token %}
-                  <table style="width:200px;">
-                      {{form.as_p}}
-                  </table><br><br><br>
-                 <input type="submit" class="btn btn-success" value="Register">
-
-                 {% if messages %}
-        {% for message in messages %}
-        <span {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</span>
-                 {% endfor %}
-                 {% endif %}
-
-
-             </form><br>
-    <p>  <form action="{% url 'home' %}" method="POST" class="d-inline" >{% csrf_token %}
-                       <input type="submit" class="btn btn-warning" value="Home"></p>
-
-
-                   </form>
-
-
-        <br><br><br>
-    </div>
-      <div>
+      <a href="{% url 'passwordchange' %}"><input type="submit" class="btn btn-warning" value="Change Password"></a>
+      <a href="{% url 'setpassword' %}"><input type="submit" class="btn btn-warning" value="Forgot Password"></a>
+      <a href="{% url 'signup'%}"><input type="button" class="btn btn-success" value="Admin SignUp"></a>
+ </div>
+  </div>
+</div>
+<div>
       <h4 class="text-center alert alert-info"> Show data </h4>
           {% if dataa %}
 
@@ -96,11 +88,7 @@
       {% endif %}
   </div>
   </div>
-</div>
-
-
 
 </body>
 </html>
-
 {% endblock %}
