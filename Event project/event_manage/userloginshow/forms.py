@@ -7,4 +7,3 @@ class Signform(UserCreationForm):
         model=User
         fields=['username','first_name','last_name','email']
         labels={'email:Email'}
-
